@@ -41,3 +41,23 @@ Lidiar con un error silencioso en producción puede generar bastante estrés. Cu
 Una vez calmadas las aguas, la solución técnica se gestionó bajo estrictas buenas prácticas. Creé una rama específica (feature branch) mediante nuestro sistema de **control de versiones** para aislar los cambios en la lógica de procesamiento y los nuevos tests unitarios. 
 
 Antes de fusionar los cambios a la rama principal mediante un Pull Request, tuvimos una sesión de revisión de código. Allí, apliqué los principios de **Feedback Radicalmente Sincero**. Un compañero me señaló directamente que el primer bloque *try-catch* que propuse era demasiado genérico, pero lo hizo desde un lugar de genuina empatía por la calidad del proyecto. Lejos de tomarlo personal, ese feedback me permitió refinar la excepción en Apex y lograr que las pruebas unitarias superaran el 80% de cobertura de forma sólida.
+
+---
+
+## Cronología del Incidente
+* **09:00 AM (Sync Diario):** El equipo de soporte reporta una caída inusual en la entrada de tickets.
+* **09:45 AM:** Se revisan los logs del sistema; no hay alertas críticas, pero se detecta que la clase `EmailMessageHandler` se detiene silenciosamente.
+* **10:30 AM:** Identificamos que la API externa cambió su estructura JSON.
+* **11:15 AM:** Implementación de la solución en la rama `fix/email-json-parser`.
+* **12:30 PM:** Revisión de código (PR), pruebas unitarias pasando al 80% y despliegue a producción.
+* **01:00 PM:** Flujo de correos restablecido y sincronización de mensajes perdidos.
+
+## Evidencia Técnica y Control de Versiones
+Para la resolución de este incidente, se utilizó un flujo de trabajo basado en ramas (Feature Branching). 
+* **Pull Request Principal:** [Ver Pull Request #1]([https://github.com/YazminTrucido/blog-tecnico-integrador/pull/1])
+* **Commits Atómicos:**
+  * Implementación de manejo de excepciones: [`fix: refactor JSON deserialization con try-catch`]([https://github.com/YazminTrucido/blog-tecnico-integrador/commit/d3546de854043cf66428262a125fe79a584cc6e8])
+  * Mejora de pruebas unitarias: [`test: add mock scenarios to reach 80% code coverage`]([https://github.com/YazminTrucido/blog-tecnico-integrador/pull/1/changes/8afe082a4c142f59fe497368609dfdd2f4d22f60])
+
+## Aprendizajes en un entorno Ágil y Remoto
+Trabajar este incidente de forma remota resaltó la importancia de la documentación asíncrona. La falta de un canal de alerta inmediata hizo que perdiéramos tiempo crítico antes de comunicarnos con Soporte. A partir de ahora, integraremos notificaciones automáticas al canal de Slack del equipo de guardia (Duty Squad) ante cualquier excepción de deserialización, asegurando que en un entorno distribuido todos tengan visibilidad inmediata del estado de nuestras integraciones.
