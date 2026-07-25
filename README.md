@@ -54,10 +54,10 @@ Antes de fusionar los cambios a la rama principal mediante un Pull Request, tuvi
 
 ## Evidencia Técnica y Control de Versiones
 Para la resolución de este incidente, se utilizó un flujo de trabajo basado en ramas (Feature Branching). 
-* **Pull Request Principal:** [Ver Pull Request #1]([https://github.com/YazminTrucido/blog-tecnico-integrador/pull/1])
+* **Pull Request Principal:** [Ver Pull Request #1](https://github.com/YazminTrucido/blog-tecnico-integrador/pull/1)
 * **Commits Atómicos:**
-  * Implementación de manejo de excepciones: [`fix: refactor JSON deserialization con try-catch`]([https://github.com/YazminTrucido/blog-tecnico-integrador/commit/d3546de854043cf66428262a125fe79a584cc6e8])
-  * Mejora de pruebas unitarias: [`test: add mock scenarios to reach 80% code coverage`]([https://github.com/YazminTrucido/blog-tecnico-integrador/pull/1/changes/8afe082a4c142f59fe497368609dfdd2f4d22f60])
+  * Implementación de manejo de excepciones: [`fix: refactor JSON deserialization con try-catch`](https://github.com/YazminTrucido/blog-tecnico-integrador/commit/d3546de854043cf66428262a125fe79a584cc6e8)
+  * Mejora de pruebas unitarias: [`test: add mock scenarios to reach 80% code coverage`](https://github.com/YazminTrucido/blog-tecnico-integrador/pull/1/changes/8afe082a4c142f59fe497368609dfdd2f4d22f60)
 
 ## Aprendizajes en un entorno Ágil y Remoto
 Trabajar este incidente de forma remota resaltó la importancia de la documentación asíncrona. La falta de un canal de alerta inmediata hizo que perdiéramos tiempo crítico antes de comunicarnos con Soporte. A partir de ahora, integraremos notificaciones automáticas al canal de Slack del equipo de guardia (Duty Squad) ante cualquier excepción de deserialización, asegurando que en un entorno distribuido todos tengan visibilidad inmediata del estado de nuestras integraciones.
